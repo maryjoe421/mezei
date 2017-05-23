@@ -1,0 +1,18 @@
+body {
+	padding-top: 70px;
+}
+
+h1 {
+	margin-top: 0;
+	margin-bottom: 25px;
+}
+
+
+.editor-wrapper {
+	width: 100%;
+	overflow-x: auto;
+}
+
+.box-text {
+	margin-bottom: 30px;
+}

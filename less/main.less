@@ -35,6 +35,7 @@ h1 {
 h2 {
 	font-size: 48px;
 	margin-top: 25px;
+	text-align: center;
 
 	@media(min-width:768px) {
 		h2 {
@@ -96,13 +97,12 @@ a {
 	.nav {
 		li {
 			font-size: 15px;
+			background-color: rgba(0,0,0,0.5);
 
 			a {
-				&:hover {
-					outline: none;
-					background-color: transparent;
-				}
+				position: relative;
 
+				&:hover,
 				&:focus,
 				&:active {
 					outline: none;
@@ -114,7 +114,18 @@ a {
 				outline: none;
 
 				a {
-					background-color: fade(white, 30%);
+					color: darken(@link-color,40%);
+
+					&::after {
+						content: '';
+						display: block;
+						position: absolute;
+						bottom: 10px;
+						left: 15px;
+						right: 15px;
+						height: 1px;
+						background-color: darken(@link-color,40%);
+					}
 				}
 			}
 		}
@@ -130,7 +141,6 @@ a {
 		&.top-nav-collapse {
 			padding: 0;
 			background: black;
-			border-bottom: 1px solid fade(white, 30%);
 		}
 	}
 }
@@ -140,7 +150,6 @@ a {
 	width: 100%;
 	height: auto;
 	padding: 100px 0;
-	text-align: center;
 	background: black url(../img/intro-bg.jpg) no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -150,9 +159,29 @@ a {
 	.intro-body {
 		display: table-cell;
 		vertical-align: middle;
+		text-align: center;
+
+		.box-image {
+			background-color: rgba(195, 85, 20, 0.5);
+			/* background-color: rgba(255, 255, 255, 0.5); */
+			box-shadow: 0px 0px 30px 25px rgba(0,0,0,0.5);
+			border-radius: 50%;
+			/* border: #aa461e solid 3px; */
+			overflow: hidden;
+			max-width: 220px;
+			max-height: 220px;
+			margin: 0 auto 30px;
+
+			img {
+				margin: 5px auto;
+				display: block;
+				width: 100%;
+			}
+		}
 
 		h1 {
 			font-size: 50px;
+			margin-bottom: 0;
 		}
 
 		p {
@@ -166,13 +195,17 @@ a {
 		padding: 0;
 
 		.intro-body {
+			text-align: center;
+
 			h1 {
 				font-size: 100px;
+				text-align: left;
 			}
 
 			p {
 				font-family: @secondary-font;
 				font-size: 48px;
+				text-align: left;
 			}
 		}
 	}
@@ -183,19 +216,19 @@ a {
 	height: 70px;
 	margin-top: 15px;
 	padding: 7px 16px;
-	border: 2px solid white;
+	color: white;
+	border: 2px solid @link-color;
 	border-radius: 100% !important;
 	font-size: 40px;
 	background: transparent;
-	-webkit-transition: background .3s ease-in-out;
-	-moz-transition: background .3s ease-in-out;
-	transition: background .3s ease-in-out;
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
 
 	&:hover,
 	&:focus {
 		outline: none;
 		color: @link-color;
-		background: fade(@link-color, 10%);
 	}
 
 	i.animated {
@@ -262,12 +295,12 @@ section {
 	}
 
 	.container {
-		padding: 75px 0;
+		padding-top: 75px;
 		min-height: 640px;
 	}
 }
 
-.item {
+.page {
 	.cover {
 		background-position: 50% 50%;
 		background-attachment: fixed;
@@ -287,29 +320,37 @@ section {
 	}
 }
 
-#item1 {
+#page1 {
 	.cover {
 		background-image: url(../img/abandoned-factory.jpg);
 		background-position: 50% 100%;
 	}
 }
 
-#item2 {
+#page2 {
 	.cover {
 		background-image: url(../img/colour-curls-with-horse.jpg);
 	}
 }
 
-#item3 {
+#page3 {
 	.cover {
 		background-image: url(../img/oil-paint.jpg);
 		background-position: 50% 100%;
 	}
 }
 
-#item4 {
+#page4 {
 	.cover {
 		background-image: url(../img/colour-curls.jpg);
+	}
+}
+
+
+@media(max-width:767px) {
+	.box-text {
+		padding-left: 15px;
+		padding-right: 15px;
 	}
 }
 
@@ -332,54 +373,6 @@ section {
 	border-radius: 0;
 }
 
-.btn-default {
-	border: 1px solid @link-color;
-	color: @link-color;
-	background-color: transparent;
-	border-radius: 23px;
-
-	&:hover,
-	&:focus {
-		border: 1px solid darken(@link-color,20%);
-		outline: none;
-		color: black;
-		background-color: darken(@link-color,20%);
-	}
-}
-
-ul.banner-social-buttons {
-	margin-top: 0;
-
-	li {
-		&:before {
-			content: '\00b7';
-			display: inline-block;
-			margin-right: 15px;
-		}
-
-		&:first-child {
-			&::before {
-				content: none;
-			}
-		}
-	}
-
-	@media(max-width:1199px) {
-		margin-top: 15px;
-	}
-
-	@media(max-width:767px) {
-		li {
-			display: block;
-			margin-bottom: 20px;
-			padding: 0;
-
-			&:last-child {
-				margin-bottom: 0;
-			}
-		}
-	}
-}
 
 footer {
 	padding: 20px 0;
