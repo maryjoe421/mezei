@@ -16,10 +16,10 @@ mysql_select_db("$sql_adatbazis") or die('<h2>Adatbázis hiba</h2><p>Nem tudtam 
 mysql_query('SET NAMES utf8');
 
 $menuitems = array(
-	"page1" => "Logic-Based Therapy",
-	"page3" => "Background",
-	"page4" => "Contact",
-	"page2" => "Other activities"
+	"page1" => array("Logic-Based Therapy" => "lbt"),
+	"page2" => array("Background" => "bg"),
+	"page3" => array("Contact" => "ct"),
+	"page4" => array("Other activities" => "oa")
 );
 
 $languages = array(

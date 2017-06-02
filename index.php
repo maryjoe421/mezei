@@ -50,11 +50,13 @@
 							<a href="#page-top"></a>
 						</li>
 <?php
-	foreach ($menuitems as $key => $value) {
-		echo '
+	foreach ($menuitems as $key => $menuitem) {
+		foreach ($menuitem as $subkey => $page) {
+			echo '
 						<li>
-							<a class="page-scroll" href="#'.$key.'">'.$value.'</a>
+							<a class="page-scroll" href="#'.$key.'">'.$subkey.'</a>
 						</li>';
+		}
 	}
 ?>
 						<li>
@@ -74,7 +76,7 @@
 					<div class="row">
 						<div class="col-sm-4 col-md-3">
 							<div class="box-image">
-								<img src="img/profile-picture.png" alt="">
+								<a href="#" data-toggle="modal" data-target=".prezi-modal"><img src="img/profile-picture.png" alt=""></a>
 							</div>
 						</div>
 						<div class="col-sm-8 col-md-9">
@@ -93,113 +95,47 @@
 			</div>
 		</header>
 
-		<!-- About Section -->
-		<section class="page" id="page1">
+<?php
+	foreach ($menuitems as $key => $menuitem) {
+		foreach ($menuitem as $subkey => $page) {
+			echo '
+
+		<!-- '.$subkey.' page -->
+		<section class="page" id="'.$key.'">
 			<div class="cover">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2">
-							<!-- h2>Logic-Based Therapy</h2>
-							<p>I am a certified consultant in the field of Logic-Based Therapy (LBT). I aim to make the life of my fellow human beings happier and more successful. My target is to promote personal empowerment through rational and logical reasoning and the correct use of language.</p>
-							<p>Through Logic-Based Therapy you can benefit from the ancient knowledge of philosophy of the East and West. LBT is about tapping into the wisdom of Plato, Aristotle, Laozi, Hume, Nietzsche, Kirkegaard, Sartre, Mill, Hamvas, and Rorty, etc.</p>
-							<p>You can expect to become experienced in flexing your willpower muscle, strengthen your ability to view things objectively, and learn to apply a more helpful perspective to different life situations.</p>
-							<p>I would gladly be your ferryman to steer your boat clear of reefs and whirlpools and direct you towards happiness.</p>
-							<p class="text-left">There are some sample problems addressed by LBT consultants</p>
-							<ul class="text-left">
-								<li>Moral issues; Values or Political disagreement</li>
-								<li>Rejection</li>
-								<li>Career, and Job or co-worker conflicts</li>
-								<li>Time management issues; Procrastination</li>
-								<li>Peer pressure</li>
-								<li>Family relations; Family, Family planning, or In-law issues</li>
-								<li>Relationship; Couples therapy, Falling in and out of love</li>
-								<li>Breakups and Divorce</li>
-								<li>Parenting issues; Becoming parent, Siblings, Rivalry, Adopted children</li>
-								<li>Aging; Retirement, disability, Midlife, or End of life issues</li>
-								<li>Financial issues</li>
-								<li>Personal loss; Loss of a family member, a friend or a pet</li>
-								<li>Discrimination; Religion or Race related issues</li>
-							</ul -->
+						<div class="col-lg-8 col-lg-offset-2">';
 
-<?php
-	$_GET['menuitem'] = 'page1';
-	require('menu.php');
-?>
+
+			$_GET['menuitem'] = $menuitems[$key][$subkey];
+			require('menu.php');
+
+			echo '
 
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
+		</section>';
 
-		<!-- where_to Section -->
-		<section class="page" id="page3">
-			<div class="cover">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2">
-							<!-- h2>Other activities</h2>
-							<h3>Interpreting</h3>
-							<p>I'm a Face-to-face interpreter, who is bridging the gap between the English and the Hungarian languages. Most of my appointments are either in a medical or in a legal setting. However, I can utilise my expertise to aid private or business clients too. I'm precise as well as quick. I take each and every task equally seriously and handle all data confidentially.<br>Whenever I confirm your booking you can expect me to arrive on time dressed appropriately.</p>
-							<h3>Teaching</h3>
-							<p>I'm a teacher sometimes in a school or at the university. I trade in the classroom for a living room or for a café or maybe for a library from time to time. I'm enthusiastic about ethics and mathematics. I'm experienced in both of these fields as well as in the Hungarian and English language. I enjoy teaching people of varying abilities and I teach young and old, solo or a group, in English or in Hungarian.</p -->
-
-<?php
-	$_GET['menuitem'] = 'page3';
-	require('menu.php');
+		}
+	}
 ?>
 
+		<!-- Modal -->
+		<div class="modal fade prezi-modal" id="preziModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<div class="modal-body">
+						<div class="frame-wrapper">
+							<?php if ($_COOKIE['language'] == "en") { ?><iframe id="iframe_container" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="940" height="480" src="https://prezi.com/embed/xaswm-l8eo4m/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE1IRC9YYk9DR3JMSi9LMWdDSUhycjNISm9SOWhGQ3dib1l2Qm1BUXB3PT0&amp;landing_sign=scI-FDn7hYCpywNeY9D6-5G4GNN-v1wP7CD5z4dGcIg"></iframe><?php } else { ?><iframe id="iframe_container" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" width="940" height="480" src="https://prezi.com/embed/cuw7-egre-6j/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE1IRC9YYk9DR3JMSi9LMWdDOTFYMGtJM2hvR1ZKUzFLQUFUb2VQV3lRPT0&amp;landing_sign=tJaieiaKVEeOqifjEWn559zcPS5w6sHw_DBIEJc-8f4"></iframe><?php } ?>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-
-		<!-- where_from Section -->
-		<section class="page" id="page4">
-			<div class="cover">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2">
-							<!-- h2>Background</h2>
-							<p>Soon...</p -->
-
-<?php
-	$_GET['menuitem'] = 'page4';
-	require('menu.php');
-?>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- Contact Section -->
-		<section class="page" id="page2">
-			<div class="cover">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-8 col-lg-offset-2">
-							<!-- h2>Contact</h2>
-							<p>In real life you can find me in London, UK; sometimes in Budapest, HUN, and occasionally in Sajószentpéter.</p>
-							<ul class="list-inline banner-social-buttons">
-								<li><a href="tel:07719612287">07719 612 287</a></li>
-								<li><a href="mailto:tamas@mezei.co.uk">tamas@mezei.co.uk</a></li>
-								<li><a href="https://www.linkedin.com/in/tamasmezei">Linkedin</a></li>
-								<li><a href="http://npcassoc.org/philosophical-counselor-directory/">NPCA reference under UK</a></li>
-							</ul -->
-
-<?php
-	$_GET['menuitem'] = 'page2';
-	require('menu.php');
-?>
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		</div>
 
 		<!-- Footer -->
 		<footer>
